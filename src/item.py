@@ -45,8 +45,9 @@ class Item:
     def instantiate_from_csv(cls):
         """Инициализация экземпляров через файл"""
         items_data = DAO.get_all_data()
-        for row in items_data:
-            cls(row['name'], row['price'], row['quantity'])
+        if items_data:
+            for row in items_data:
+                cls(row['name'], row['price'], row['quantity'])
 
     @staticmethod
     def string_to_number(string):
